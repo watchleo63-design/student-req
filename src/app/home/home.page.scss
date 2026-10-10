@@ -1,27 +1,131 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-toolbar {
+  --background: #315c46;
+  --color: #fff;
 }
 
-#container strong {
+ion-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.intro {
+  padding: 12px 4px 4px;
+}
+
+.intro h1 {
+  margin: 0 0 6px;
+  color: #26352c;
+  font-size: 26px;
+}
+
+.intro p {
+  margin: 4px 0;
+  color: #68736b;
+}
+
+.intro .student-count {
+  color: #315c46;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+ion-searchbar {
+  --background: #f0f3f0;
+  --color: #26352c;
+  --placeholder-color: #666;
+  --icon-color: #315c46;
+  padding-inline: 0;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  margin: 4px 0 14px;
+}
+
+ion-button {
+  --color: #315c46;
+  --border-color: #b8c8bc;
+  margin-inline: 0;
+  text-transform: none;
+}
+
+.filters ion-button.active {
+  --background: #315c46;
+  --color: #fff;
+  --border-color: #315c46;
+}
+
+ion-card {
+  margin: 0 0 12px;
+  border: 1px solid #e0e6e1;
+  border-radius: 12px;
+  box-shadow: none;
+  background: #fff;
+}
+
+.selected {
+  border: 2px solid #588768;
+  background: #f3f8f4;
+}
+
+.student-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.student-avatar {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  border-radius: 50%;
+  background: #dceadf;
+  color: #315c46;
   font-size: 20px;
-  line-height: 26px;
+  font-weight: 700;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+.student-avatar.female {
+  background: #f4e5dc;
+  color: #8b5940;
+}
 
-  color: #8c8c8c;
+.student-info h2 {
+  margin: 0 0 4px;
+  color: #26352c;
+  font-size: 17px;
+}
 
+.student-info p {
+  margin: 3px 0;
+  color: #68736b;
+  font-size: 13px;
+}
+
+.selected-note {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  color: #315c46;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.empty {
+  text-align: center;
+  padding: 36px 16px;
+  color: #68736b;
+}
+
+.empty h2 {
+  margin: 0 0 8px;
+  color: #26352c;
+  font-size: 18px;
+}
+
+.empty p {
   margin: 0;
-}
-
-#container a {
-  text-decoration: none;
 }

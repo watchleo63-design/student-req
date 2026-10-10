@@ -1,20 +1,86 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>IT Student List</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <section class="intro">
+    <h1>Our students</h1>
+    <p>Browse the Year 3 IT class.</p>
+    <p class="student-count">Students shown: {{ filteredStudents.length }}</p>
+  </section>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-searchbar
+    placeholder="Search by name or course"
+    (ionInput)="onSearchChange($event)">
+  </ion-searchbar>
+
+  <div class="filters">
+    <ion-button
+      fill="outline"
+      size="small"
+      [class.active]="selectedGender === 'All'"
+      (click)="filterByGender('All')">
+      All
+    </ion-button>
+
+    <ion-button
+      fill="outline"
+      size="small"
+      [class.active]="selectedGender === 'Male'"
+      (click)="filterByGender('Male')">
+      Male
+    </ion-button>
+
+    <ion-button
+      fill="outline"
+      size="small"
+      [class.active]="selectedGender === 'Female'"
+      (click)="filterByGender('Female')">
+      Female
+    </ion-button>
   </div>
+
+  @if (filteredStudents.length > 0) {
+    @for (student of filteredStudents; track student.id) {
+      <ion-card [class.selected]="highlightedId === student.id">
+        <ion-card-content>
+          <div class="student-row">
+            <div class="student-avatar" [class.female]="student.gender === 'Female'">
+              {{ student.name.charAt(0) }}
+            </div>
+
+            <div class="student-info">
+              <h2>{{ student.name }}</h2>
+              <p>{{ student.course }}</p>
+              <p>{{ student.gender }} · Year {{ student.year }} · ID #00{{ student.id }}</p>
+            </div>
+          </div>
+
+          @if (highlightedId === student.id) {
+            <p class="selected-note">Selected</p>
+            <ion-button
+              fill="outline"
+              size="small"
+              (click)="toggleHighlight(student.id)">
+              Deselect
+            </ion-button>
+          } @else {
+            <ion-button
+              fill="outline"
+              size="small"
+              (click)="toggleHighlight(student.id)">
+              Select student
+            </ion-button>
+          }
+        </ion-card-content>
+      </ion-card>
+    }
+  } @else {
+    <div class="empty">
+      <h2>No students found</h2>
+      <p>Try a different name or filter.</p>
+    </div>
+  }
 </ion-content>
